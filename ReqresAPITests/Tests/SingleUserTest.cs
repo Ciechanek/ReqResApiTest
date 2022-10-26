@@ -18,5 +18,12 @@ namespace ReqresAPITests.Tests
             GetUsersRequests request = new GetUsersRequests(Client);
             request.GetSingleUser(2).StatusCode.Should().Be(HttpStatusCode.OK);
         }
+
+        [Fact]
+        public void GetNotExistingUserTest()
+        {
+            GetUsersRequests request = new GetUsersRequests(Client);
+            request.GetSingleUser(253).StatusCode.Should().Equals(404);
+        }
     }
 }
