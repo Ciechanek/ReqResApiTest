@@ -22,5 +22,15 @@ namespace ReqresAPITests.Tests
             Resources jsonResponse = JsonConvert.DeserializeObject<Resources>(response.Content);
             Assert.Equal("cerulean", jsonResponse.Data[0].Name);
         }
+
+        [Fact]
+        public void GetSingleResource()
+        {
+            int resourceToGet = 2;
+            ResourcesRequests request = new ResourcesRequests(Client);
+            RestResponse response = request.GetSingleResource(resourceToGet);
+            Resources jsonResponse = JsonConvert.DeserializeObject<Resources>(response.Content);
+            Assert.Equal("fuchsia rose", jsonResponse.Data[resourceToGet-1].Name);
+        }
     }
 }
