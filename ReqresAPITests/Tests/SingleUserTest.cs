@@ -23,7 +23,7 @@ namespace ReqresAPITests.Tests
         public void GetNotExistingUserTest()
         {
             GetUsersRequests request = new GetUsersRequests(Client);
-            request.GetSingleUser(253).StatusCode.Should().Equals(404);
+            request.GetSingleUser(253).StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
     }
 }
